@@ -1,15 +1,22 @@
 let createContact = require("./Contact");
-let getContacts = require("./ContactCollection");
+let database = require("./ContactCollection");
 
-function listContacts() {
-    getContacts().forEach(contact => {
-        let contactComponent = createContact(contact.name, contact.phone, contact.address)
-        writeContactsToDOM(contactComponent)
-    })
+
+let outputEl = document.querySelector("#contactList");
+
+
+function listContacts(){
+    outputEl.innerHTML = "";
+    database.getContacts().forEach(contact => {
+        let contactComponent = createContact(contact.name, contact.phone, contact.address);
+        writeContactsToDOM(contactComponent);
+    });
 }
 
 
 function writeContactsToDOM(contact){
-    document.querySelector("#contactList").innerHTML += contact;
+    outputEl.innerHTML += contact;
 }
+
+
 module.exports = listContacts;

@@ -1,4 +1,7 @@
-let listContacts = require("./ContactList");
-let contactForm = require("./ContactForm");
+"use strict";
 
+let populateForm = require("./ContactForm");
+let listContacts = require("./ContactList");
+
+populateForm();
 listContacts();
